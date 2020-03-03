@@ -10,24 +10,12 @@ export const signupReducer = (state, action) => {
         case 'SUBMIT':
             return {
                 ...state,
-                fname: '',
-                lname: '',
+                first_name: '',
+                last_name: '',
                 username: '',
                 email: '',
-                password: '',
-                loading: true
-            }
-        // If the post is successful, return the state and set loading to false
-        case 'SUCCESS': 
-            return {
-                ...state,
-                loading: false
-            }
-        // If not, same as above.
-        case 'ERROR':
-            return {
-                ...state,
-                loading: false
+                password: ''
+
             }
         default:
             return state;

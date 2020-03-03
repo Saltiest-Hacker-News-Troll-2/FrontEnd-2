@@ -6,12 +6,11 @@ export const SignupContext = createContext();
 export default function SignupProvider(props) {
     // Setting initial state with the dispatch function to communicate with our reducer & context globally.
     const [initState, dispatch] = useReducer(signupReducer, {
-        fname: '',
-        lname: '',
+        first_name: '',
+        last_name: '',
         username: '',
         email: '',
         password: '',
-        loading: false
     });
     return (
         <SignupContext.Provider value={ { initState, dispatch } }>

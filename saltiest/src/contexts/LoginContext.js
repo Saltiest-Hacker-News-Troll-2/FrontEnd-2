@@ -8,8 +8,6 @@ export default function LoginProvider(props) {
     const [initialState, dispatch] = useReducer(loginReducer, {
         username: '',
         password: '',
-        loading: false,
-        loggedin: false
     });
     return (
         <LoginContext.Provider value={ { initialState, dispatch } }>

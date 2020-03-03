@@ -1,22 +1,39 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { LoginContext } from '../contexts/LoginContext';
+import axios from 'axios';
 
 /*
 TODO: Style to look presentable
 */
-export default function Login() {
+export default function Login(props) {
   // Grab our global context and destructure props passed to the provider.
   const { initialState, dispatch } = useContext(LoginContext);
+  // Set local context to prevent double submitting by disabling the button while it's submitting.
+  const [loading, setLoading] = useState(false); 
 
   // Will be posting to back end up I can.
   const handleSubmit = e => {
     e.preventDefault();
     dispatch({type: 'LOGIN'})
+    setLoading(true);
+    axios.post('https://troll-findr.herokuapp.com/api/auth/login', initialState)
+      .then(res=>{
+        alert('Log in successful!')
+        window.localStorage.setItem('token', res.data.token);
+        props.history.push('/dashboard');
+        setLoading(false);
+      })
+      .catch(err=>{
+        alert('Log in failed!')
+        setLoading(false);
+        console.log(err)
+      })
+
   }
 
     return (
-      <div className="w-50">
-        <form className="w-25 d-flex flex-column" onSubmit={handleSubmit}>
+      <div className="w-25">
+        <form className="d-flex flex-column" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Username*</label>
               <input type="text" 
@@ -41,7 +58,7 @@ export default function Login() {
               />
               <small>* All fields are required</small>
           </div>
-          {!initialState.loading ? <button type="submit" className="btn btn-primary align-self-center w-50">Submit</button> : <button type="submit" className="btn btn-primary align-self-center w-50" disabled={initialState.loading}>Submitting...</button>} 
+          {!loading ? <button type="submit" className="btn btn-primary align-self-center w-50">Submit</button> : <button type="submit" className="btn btn-primary align-self-center w-50" disabled={loading}>Submitting...</button>} 
       </form>
     </div>
     )

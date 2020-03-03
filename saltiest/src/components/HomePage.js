@@ -1,24 +1,15 @@
-import React, {useState, useEffect} from "react";
-import { axiosWithAuth } from '../utils/axiosWithAuth';  
-import HomepageCard from "./HomePageCard";
+import React from "react";
+// import { axiosWithAuth } from '../utils/axiosWithAuth';  
+// import HomepageCard from "./HomePageCard";
 
 /*
-TODO: Finish the homepage based on back end authentication
+TODO: Finish the homepage or "dashboard"
 */
 export default function HomePage() {
-    const [datas, setDatas] = useState([]);
-
-    useEffect (() => {
-        
-    }, []);
 
     return (
         <div className="HomepageCard">
-            {datas.map(data => {
-                return (
-                    <HomepageCard />
-                )
-            })}
+            <h1>LOGIN SUCCESSFUL</h1>
         </div>
     );
 }
