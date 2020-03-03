@@ -8,7 +8,7 @@ TODO: Finish the homepage or "dashboard"
 export default function HomePage() {
 
     return (
-        <div className="HomepageCard">
+        <div>
             <h1>LOGIN SUCCESSFUL</h1>
         </div>
     );
