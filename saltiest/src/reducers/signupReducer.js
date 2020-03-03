@@ -23,6 +23,12 @@ export const signupReducer = (state, action) => {
                 ...state,
                 loading: false
             }
+        // If not, same as above.
+        case 'ERROR':
+            return {
+                ...state,
+                loading: false
+            }
         default:
             return state;
     }

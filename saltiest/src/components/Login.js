@@ -15,14 +15,13 @@ export default function Login() {
   }
 
     return (
-      <form className="w-25" onSubmit={handleSubmit}>
-        <div className="d-flex flex-column align-items-center w-50">
+      <div className="w-50">
+        <form className="w-25 d-flex flex-column" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Username</label>
+            <label>Username*</label>
               <input type="text" 
               className="form-control" 
-              name="username" id="exampleInputEmail1" 
-              aria-describedby="emailHelp" 
+              name="username" 
               placeholder="Enter your username" 
               value={initialState.username}
               // Pretty neat trick to handle form inputs with a reducer rather than creating many functions.
@@ -31,19 +30,19 @@ export default function Login() {
               />
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
+            <label>Password*</label>
               <input 
               type="password" 
               className="form-control" 
-              id="exampleInputPassword1" 
               placeholder="Enter your Password" 
               value={initialState.password}
               onChange={e=>dispatch({ type: 'FORM', field: 'password', value: e.target.value })}
               required 
               />
+              <small>* All fields are required</small>
           </div>
-          {!initialState.loading ? <button type="submit" className="btn btn-primary">Submit</button> : <button type="submit" className="btn btn-primary" disabled={initialState.loading}>Submitting...</button>}
-        </div>
-    </form>
+          {!initialState.loading ? <button type="submit" className="btn btn-primary align-self-center w-50">Submit</button> : <button type="submit" className="btn btn-primary align-self-center w-50" disabled={initialState.loading}>Submitting...</button>} 
+      </form>
+    </div>
     )
 }

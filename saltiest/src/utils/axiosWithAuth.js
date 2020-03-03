@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// At the moment not entirely sure I need this, but I may so leaving it here.
 export const axiosWithAuth = () => {
     // Initially you'd grab the token here, still waiting on the back end.
     return axios.create({
@@ -9,6 +8,6 @@ export const axiosWithAuth = () => {
             authorization: 'ssss'
         },
         // The url the api is without any endpoints attached
-        baseURL: 'http://localhost:5000'
+        baseURL: 'https://troll-findr.herokuapp.com/api'
     });
 }

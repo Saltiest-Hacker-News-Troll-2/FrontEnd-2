@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { SignupContext } from '../contexts/SignupContext';
+import axios from 'axios';
 
 /*
 TODO: Style to look presentable
@@ -8,16 +9,26 @@ export default function Signup() {
   // Grab our global context and destructure props passed to the provider.
   const { initState, dispatch } = useContext(SignupContext); 
 
-  // For now nothing, but will be posting to back end when I can.
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+    dispatch({type: 'SUBMIT'})
+    axios.post('https://troll-findr.herokuapp.com/api/auth/register', initState)
+      .then(res=>{
+        dispatch({type: 'SUCCESS'})
+        console.log(res.data)
+      })
+      .catch(err=>{
+        dispatch({type: 'ERROR'})
+        alert('Sign up failed!')
+        console.log(err)
+      })
   }
 
     return (
       <form className="w-25" onSubmit={handleSubmit}>
-        <div className="d-flex flex-column align-items-center w-50">
+        <div className="d-flex flex-column justify-content-center">
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">First Name*</label>
+            <label>First Name*</label>
               <input 
               type="text" 
               name="name" 
@@ -31,7 +42,7 @@ export default function Signup() {
               />
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Last Name*</label>
+            <label>Last Name*</label>
               <input 
               type="text" 
               name="lname" 
@@ -44,7 +55,7 @@ export default function Signup() {
               />
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Username*</label>
+            <label>Username*</label>
               <input 
               type="text" 
               name="name" 
@@ -57,7 +68,7 @@ export default function Signup() {
               />
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address*</label>
+            <label>Email address*</label>
               <input 
               type="email" 
               className="form-control" 
@@ -69,18 +80,18 @@ export default function Signup() {
               />
           </div>
           <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password*</label>
+              <label>Password*</label>
               <input 
               type="password" 
               className="form-control" 
-              placeholder="Password"
+              placeholder="Enter a Password"
               value={initState.password}
               onChange={e=>dispatch({type:'FORM', field: 'password', value: e.target.value})} 
               required 
               />
-              <small>* These fields are required</small>
+              <small>* All fields are required</small>
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          {!initState.loading ? <button type="submit" className="btn btn-primary align-self-center w-50">Submit</button> : <button type="submit" className="btn btn-primary align-self-center w-50" disabled={initState.loading}>Submitting...</button>}
           </div>
       </form>
     )

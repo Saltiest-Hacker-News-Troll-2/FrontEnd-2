@@ -21,6 +21,11 @@ export const loginReducer = (state, action) => {
                 loading: false,
                 loggedin: true
             }
+        case 'FAILURE':
+            return {
+                ...state,
+                loading: false
+            }
         default:
             return state;
     }
