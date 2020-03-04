@@ -32,25 +32,27 @@ export default function Signup() {
       <form className="w-25" onSubmit={handleSubmit}>
         <div className="d-flex flex-column">
         <div className="form-group">
-            <label>Username*</label>
+            <label>First Name</label>
               <input 
               type="text" 
+              name="first_name"
               className="form-control" 
               aria-describedby="emailHelp" 
               placeholder="Enter your First Name"
-              value={initState.username}
+              value={initState.first_name}
               onChange={e=>dispatch({type:'FORM', field: 'first_name', value: e.target.value})} 
               required 
               />
           </div>
           <div className="form-group">
-            <label>Username*</label>
+            <label>Last Name</label>
               <input 
               type="text" 
+              name="last_name"
               className="form-control" 
               aria-describedby="emailHelp" 
               placeholder="Enter your Last Name"
-              value={initState.username}
+              value={initState.last_name}
               onChange={e=>dispatch({type:'FORM', field: 'last_name', value: e.target.value})} 
               required 
               />
@@ -68,13 +70,14 @@ export default function Signup() {
               />
           </div>
           <div className="form-group">
-            <label>Username*</label>
+            <label>Email</label>
               <input 
               type="text" 
               className="form-control" 
+              name="email"
               aria-describedby="emailHelp" 
               placeholder="Enter your Email"
-              value={initState.username}
+              value={initState.email}
               onChange={e=>dispatch({type:'FORM', field: 'email', value: e.target.value})} 
               required 
               />

@@ -11,7 +11,7 @@ export default function Login(props) {
   // Set local context to prevent double submitting by disabling the button while it's submitting.
   const [loading, setLoading] = useState(false); 
 
-  // Will be posting to back end up I can.
+
   const handleSubmit = e => {
     e.preventDefault();
     dispatch({type: 'LOGIN'})
@@ -20,7 +20,8 @@ export default function Login(props) {
       .then(res=>{
         alert('Log in successful!')
         window.localStorage.setItem('token', res.data.token);
-        props.history.push('/dashboard');
+        props.history.push(`/dashboard/${res.data.user.username}`);
+        console.log(res.data)
         setLoading(false);
       })
       .catch(err=>{

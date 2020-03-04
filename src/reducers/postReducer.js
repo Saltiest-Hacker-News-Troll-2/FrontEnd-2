@@ -1,5 +1,5 @@
 export const initialState = {
-    comment: ''
+    text: ''
 }
 
 export const postReducer = (state,action) => {
@@ -7,6 +7,14 @@ export const postReducer = (state,action) => {
         case 'FORM':
             return {
                 ...state,
+                [action.field]: action.value
             }
+        case 'POST':
+            return {
+                ...state,
+                text: ''
+            }
+        default: 
+            return state;
     }
 }

@@ -13,7 +13,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           return <Component {...props} />;
         } else {
           // redirect the user to the log in page
-          alert('Please Log in!')
+          alert('Token not found! Are you logged in?')
           return <Redirect to="/" />;
         }
       }}
