@@ -29,9 +29,9 @@ export default function Signup() {
   }
 
     return (
-      <form className="w-25" onSubmit={handleSubmit}>
-        <div className="d-flex flex-column">
-        <div className="form-group">
+      <form onSubmit={handleSubmit}>
+        <div>
+        <div>
             <label>First Name</label>
               <input 
               type="text" 
@@ -44,7 +44,7 @@ export default function Signup() {
               required 
               />
           </div>
-          <div className="form-group">
+          <div>
             <label>Last Name</label>
               <input 
               type="text" 
@@ -57,7 +57,7 @@ export default function Signup() {
               required 
               />
           </div>
-          <div className="form-group">
+          <div>
             <label>Username*</label>
               <input 
               type="text" 
@@ -69,7 +69,7 @@ export default function Signup() {
               required 
               />
           </div>
-          <div className="form-group">
+          <div>
             <label>Email</label>
               <input 
               type="text" 
@@ -82,7 +82,7 @@ export default function Signup() {
               required 
               />
           </div>
-          <div className="form-group">
+          <div>
               <label>Password*</label>
               <input 
               type="password" 
@@ -92,9 +92,9 @@ export default function Signup() {
               onChange={e=>dispatch({type:'FORM', field: 'password', value: e.target.value})} 
               required 
               />
-              <small>* All fields are required</small>
+              <small>* fields are required</small>
           </div>
-          {!loading ? <button type="submit" className="btn btn-primary align-self-center w-50">Submit</button> : <button type="submit" className="btn btn-primary align-self-center w-50" disabled={loading}>Submitting...</button>}
+          {!loading ? <button type="submit">Submit</button> : <button type="submit" disabled={loading}>Submitting...</button>}
           </div>
       </form>
     )

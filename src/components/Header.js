@@ -1,39 +1,51 @@
 import React from 'react';
+import {
+  Link
+} from "react-router-dom";
+import styled from 'styled-components';
 
-export default function Header(props){
+const HeaderDiv = styled.div`
+    display: flex;
+    background-color: #FA7921;
+`
+
+const HeaderUL = styled.ul`
+    display: flex;
+    text-decoration: none;
+    flex-basis: 100%;
+    justify-content: flex-end;
+`
+
+const CuteButton = styled.button`
+    background-color: #FDE74C;
+    color: #5BC0EB;
+    width: 120px;
+    font-size: 1.4rem;
+    margin-right: 5%;
+`
+
+const StyledH1 = styled.h1`
+    color: white;
+    margin-left: 95%;
+`
+
+export default function Header(){
     const token = window.localStorage.getItem('token');
-
-    const handleClick = e => {
-        if(token){
-            window.localStorage.removeItem('token');
-        }
-    }
-
     return (
-        <div className="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-primary mb-4">
-            
-            <h1 className="text-success mr-3">TrollFindr User Dashboard</h1>
-            <ul className="navbar-nav mr-auto">
-                {/* {token ? 
-                <li className="nav-item active" data-toggle="tooltip" data-placement="bottom" title="Go To Dashboard">
-                    <a className="nav-link text-primary" href={`/dashboard`}>Dashboard</a>
-                </li>
-                    :
-                alert('User Not Logged In')
-                } */}
-                {token ? 
-                <li className="nav-item active" data-toggle="tooltip" data-placement="bottom" title="Log Out">
-                    <a className="nav-link text-primary" href="/login" onClick={handleClick}>Log Out</a>
-                </li>
-                    :
-                <li className="nav-item active" data-toggle="tooltip" data-placement="bottom" title="Go To Log In">
-                    <a className="nav-link text-primary" href="/login">Log In</a>
-                </li>
-                }
-                <li className="nav-item active" data-toggle="tooltip" data-placement="bottom" title="Go To Sign Up">
-                    <a className="nav-link text-primary" href="/signup">Sign Up</a>
-                </li>
-            </ul>
-        </div>
+        <HeaderDiv className="header">
+            <div className="headerText">
+                <StyledH1>TrollFindr</StyledH1>
+            </div>
+        <HeaderUL>
+            <Link to="/HomePage"><CuteButton>Home</CuteButton></Link>
+            <Link to="/Login"><CuteButton>Login</CuteButton></Link>
+            <Link to="/Signup"><CuteButton>Signup</CuteButton></Link>
+            {token ?
+                <Link to="/HomePage/"><CuteButton>Password</CuteButton></Link>
+                :
+                <></>
+            }
+        </HeaderUL>
+        </HeaderDiv>
     )
 }

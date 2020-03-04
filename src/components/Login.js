@@ -17,7 +17,7 @@ export default function Login(props) {
       .then(res=>{
         alert('Log in successful!')
         window.localStorage.setItem('token', res.data.token);
-        props.history.push(`/dashboard/${res.data.user.username}`);
+        props.history.push(`/HomePage`);
         console.log(res.data)
         setLoading(false);
       })
@@ -30,12 +30,11 @@ export default function Login(props) {
   }
 
     return (
-      <div className="w-25">
-        <form className="d-flex flex-column" onSubmit={handleSubmit}>
-          <div className="form-group">
+      <div >
+        <form onSubmit={handleSubmit}>
+          <div>
             <label>Username*</label>
               <input type="text" 
-              className="form-control" 
               name="username" 
               placeholder="Enter your username" 
               value={initialState.username}
@@ -44,11 +43,10 @@ export default function Login(props) {
               required 
               />
           </div>
-          <div className="form-group">
+          <div>
             <label>Password*</label>
               <input 
               type="password" 
-              className="form-control" 
               placeholder="Enter your Password" 
               value={initialState.password}
               onChange={e=>dispatch({ type: 'FORM', field: 'password', value: e.target.value })}
@@ -56,7 +54,7 @@ export default function Login(props) {
               />
               <small>* All fields are required</small>
           </div>
-          {!loading ? <button type="submit" className="btn btn-primary align-self-center w-50">Submit</button> : <button type="submit" className="btn btn-primary align-self-center w-50" disabled={loading}>Submitting...</button>} 
+          {!loading ? <button type="submit">Submit</button> : <button type="submit" disabled={loading}>Submitting...</button>} 
       </form>
     </div>
     )

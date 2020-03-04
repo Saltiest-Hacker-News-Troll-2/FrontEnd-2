@@ -24,9 +24,11 @@ export default function UpdatePassword(props) {
             .catch(err=>console.log(err))
     }
 
+    console.log(props)
+
     return (
         <div className="d-flex flex-column align-items-center">
-            <a className="nav-link" href={`/dashboard/${props.match.params.id}`}>Back to Dashboard</a>
+            <a className="nav-link" href={`/HomePage`}>Back to Dashboard</a>
             <form className="form-group d-flex" onSubmit={handleSubmit}>
                 <input type="text" name="password" className="form-control" placeholder="Enter a new password" onChange={handleChange} />
                 <button type="submit" className="btn btn-danger">Update</button>

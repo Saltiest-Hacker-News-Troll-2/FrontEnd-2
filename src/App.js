@@ -1,31 +1,32 @@
 import React from 'react';
 import Login from "./components/Login";
-import DashBoard from "./components/DashBoard";
+import HomePage from "./components/HomePage";
 import Signup from "./components/Signup";
 import Header from "./components/Header";
-import { Route, Switch } from "react-router-dom";
-import LoginProvider from './contexts/LoginContext';
-import SignupProvider from './contexts/SignupContext';
+import {Route, Switch} from "react-router-dom";
+import LoginContext from './contexts/LoginContext';
+import SignupContext from './contexts/SignupContext';
 import PrivateRoute from './components/PrivateRoute';
-import UpdatePassword from './components/UpdatePassword';
 
 function App() {
   
   return (
-  <SignupProvider>
-    <LoginProvider>
-      <div>
+  <div>
+    <SignupContext>
+      <LoginContext>
         <Header />
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <PrivateRoute exact path="/dashboard/:id" component={DashBoard} />
-          <PrivateRoute path="/dashboard/editpassword/:id" component={UpdatePassword} />
-          <Route component={Login} />
-        </Switch>
-      </div>
-    </LoginProvider>
-  </SignupProvider>
+          <Switch>
+            <Route path="/Login">
+              <Login />
+            </Route>
+            <Route path="/Signup">
+              <Signup />
+            </Route>
+            <PrivateRoute exact path="/HomePage" component={HomePage} />
+          </Switch>
+        </LoginContext>
+    </SignupContext>
+  </div>
   );
 }
 
