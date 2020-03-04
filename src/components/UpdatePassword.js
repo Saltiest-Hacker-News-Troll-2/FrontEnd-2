@@ -7,7 +7,6 @@ export default function UpdatePassword(props) {
     })
 
     const handleChange = e => {
-        e.persist();
         setPass({
             ...pass,
             [e.target.name]: e.target.value

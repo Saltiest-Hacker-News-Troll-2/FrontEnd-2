@@ -2,9 +2,6 @@ import React, { useContext, useState } from "react";
 import { LoginContext } from '../contexts/LoginContext';
 import axios from 'axios';
 
-/*
-TODO: Style to look presentable
-*/
 export default function Login(props) {
   // Grab our global context and destructure props passed to the provider.
   const { initialState, dispatch } = useContext(LoginContext);
