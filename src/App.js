@@ -7,9 +7,9 @@ import {Route, Switch} from "react-router-dom";
 import LoginContext from './contexts/LoginContext';
 import SignupContext from './contexts/SignupContext';
 import PrivateRoute from './components/PrivateRoute';
+import UpdatePassword from './components/UpdatePassword';
 
 function App() {
-  
   return (
   <div>
     <SignupContext>
@@ -23,6 +23,7 @@ function App() {
               <Signup />
             </Route>
             <PrivateRoute exact path="/HomePage" component={HomePage} />
+            <PrivateRoute exact path="/HomePage/:id" component={UpdatePassword} />
           </Switch>
         </LoginContext>
     </SignupContext>

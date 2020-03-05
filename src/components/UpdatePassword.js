@@ -27,11 +27,11 @@ export default function UpdatePassword(props) {
     console.log(props)
 
     return (
-        <div className="d-flex flex-column align-items-center">
-            <a className="nav-link" href={`/HomePage`}>Back to Dashboard</a>
+        <div>
+            <a href={`/HomePage`}>Back to Dashboard</a>
             <form className="form-group d-flex" onSubmit={handleSubmit}>
-                <input type="text" name="password" className="form-control" placeholder="Enter a new password" onChange={handleChange} />
-                <button type="submit" className="btn btn-danger">Update</button>
+                <input type="text" name="password" placeholder="Enter a new password" onChange={handleChange} />
+                <button type="submit">Update</button>
             </form>
         </div>
     )

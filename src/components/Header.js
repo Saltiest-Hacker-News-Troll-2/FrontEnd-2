@@ -29,22 +29,24 @@ const StyledH1 = styled.h1`
     margin-left: 95%;
 `
 
-export default function Header(){
+export default function Header(props){
     const token = window.localStorage.getItem('token');
+
+    const handleClick = e => {
+        if(token){
+            window.localStorage.removeItem('token');
+        }
+    }
     return (
         <HeaderDiv className="header">
             <div className="headerText">
                 <StyledH1>TrollFindr</StyledH1>
             </div>
         <HeaderUL>
+            <input type="text" placeholder="Search..."/>
             <Link to="/HomePage"><CuteButton>Home</CuteButton></Link>
-            <Link to="/Login"><CuteButton>Login</CuteButton></Link>
+            {!token ? <Link to="/Login"><CuteButton>Login</CuteButton></Link> : <Link to="/Login"><CuteButton onClick={handleClick}>Log out</CuteButton></Link>}
             <Link to="/Signup"><CuteButton>Signup</CuteButton></Link>
-            {token ?
-                <Link to="/HomePage/"><CuteButton>Password</CuteButton></Link>
-                :
-                <></>
-            }
         </HeaderUL>
         </HeaderDiv>
     )

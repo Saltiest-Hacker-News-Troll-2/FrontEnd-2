@@ -1,10 +1,15 @@
 import React, { useContext, useState } from "react";
 import { SignupContext } from '../contexts/SignupContext';
 import axios from 'axios';
+import styled from 'styled-components'
 
-/*
-TODO: Style to look presentable
-*/
+const SignupForm = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1%;
+`
+
 export default function Signup() {
   // Grab our global context and destructure props passed to the provider.
   const { initState, dispatch } = useContext(SignupContext);
@@ -29,6 +34,7 @@ export default function Signup() {
   }
 
     return (
+      <SignupForm>
       <form onSubmit={handleSubmit}>
         <div>
         <div>
@@ -41,7 +47,6 @@ export default function Signup() {
               placeholder="Enter your First Name"
               value={initState.first_name}
               onChange={e=>dispatch({type:'FORM', field: 'first_name', value: e.target.value})} 
-              required 
               />
           </div>
           <div>
@@ -54,7 +59,6 @@ export default function Signup() {
               placeholder="Enter your Last Name"
               value={initState.last_name}
               onChange={e=>dispatch({type:'FORM', field: 'last_name', value: e.target.value})} 
-              required 
               />
           </div>
           <div>
@@ -79,7 +83,6 @@ export default function Signup() {
               placeholder="Enter your Email"
               value={initState.email}
               onChange={e=>dispatch({type:'FORM', field: 'email', value: e.target.value})} 
-              required 
               />
           </div>
           <div>
@@ -97,5 +100,6 @@ export default function Signup() {
           {!loading ? <button type="submit">Submit</button> : <button type="submit" disabled={loading}>Submitting...</button>}
           </div>
       </form>
+      </SignupForm>
     )
 }

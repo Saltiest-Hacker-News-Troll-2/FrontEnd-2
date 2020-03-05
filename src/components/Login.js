@@ -1,6 +1,14 @@
 import React, { useContext, useState } from "react";
 import { LoginContext } from '../contexts/LoginContext';
 import axios from 'axios';
+import styled from 'styled-components'
+
+const LoginForm = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1%;
+`
 
 export default function Login(props) {
   // Grab our global context and destructure props passed to the provider.
@@ -30,7 +38,7 @@ export default function Login(props) {
   }
 
     return (
-      <div >
+      <LoginForm>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Username*</label>
@@ -56,6 +64,6 @@ export default function Login(props) {
           </div>
           {!loading ? <button type="submit">Submit</button> : <button type="submit" disabled={loading}>Submitting...</button>} 
       </form>
-    </div>
+    </LoginForm>
     )
 }

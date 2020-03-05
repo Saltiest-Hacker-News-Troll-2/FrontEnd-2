@@ -8,6 +8,6 @@ export const axiosWithAuth = () => {
             authorization: token
         },
         // The url the api is without any endpoints attached
-        baseURL: 'https://troll-findr.herokuapp.com/api'
+        baseURL: 'https://troll-findr.herokuapp.com'
     });
 }

@@ -7,15 +7,11 @@ flex-direction: column;
 align-items: center;
 `
 
-const CharacterCard = props => {
-    
+const CharacterCard = ({ data }) => {
+    console.log(data)
     return (
-        
         <HomePageDiv className = "HomePageCard" key>
         <button>Favorite</button>
-        <h2>Username: {props.name}</h2>
-        <p>Rating: {props.rating}</p>
-        <p>Comment: {props.comment}</p>
         </HomePageDiv>
     )
 }
