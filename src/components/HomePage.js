@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useReducer} from "react";
 import HomepageCard from "./HomePageCard";
-import Favorite from "./Favorite";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from 'styled-components';
 import {postReducer, initialState} from '../reducers/postReducer';
@@ -43,7 +42,10 @@ export default function HomePage(props) {
                 dispatch({type: 'POST'})
                 console.log(res.data)
             })
-            .catch(err=>console.log(err))
+            .catch(err=>{
+                dispatch({type: 'POST'})
+                console.log(err)
+            })
     }
 
     return (

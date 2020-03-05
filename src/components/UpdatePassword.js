@@ -21,7 +21,6 @@ export default function UpdatePassword(props) {
             .put(`/user/${props.match.params.id}`, pass)
             .then(res=>{
                 alert('Password Changed Successfully!');
-                console.log(res)
             })
             .catch(err=>console.log(err))
     }

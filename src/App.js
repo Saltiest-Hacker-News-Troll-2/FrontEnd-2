@@ -16,15 +16,13 @@ function App() {
       <LoginContext>
         <Header />
           <Switch>
-            <Route path="/Login">
-              <Login />
-            </Route>
+            <Route path="/Login" component={Login} />
             <Route path="/Signup">
               <Signup />
             </Route>
             <PrivateRoute exact path="/HomePage/:id" component={HomePage} />
-            <PrivateRoute exact path="/HomePage/:id" component={UpdatePassword} />
             <PrivateRoute exact path="/HomePage/editpassword/:id" component={UpdatePassword} />
+            <Route component={Login} />
           </Switch>
         </LoginContext>
     </SignupContext>

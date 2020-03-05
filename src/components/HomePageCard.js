@@ -11,7 +11,6 @@ width: 75%;
 `
 
 const CharacterCard = ({ data }) => {
-    console.log(data)
     return (
         <HomePageDiv>
             <h1>Posted by: {data.By}</h1>
