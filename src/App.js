@@ -22,8 +22,9 @@ function App() {
             <Route path="/Signup">
               <Signup />
             </Route>
-            <PrivateRoute exact path="/HomePage" component={HomePage} />
+            <PrivateRoute exact path="/HomePage/:id" component={HomePage} />
             <PrivateRoute exact path="/HomePage/:id" component={UpdatePassword} />
+            <PrivateRoute exact path="/HomePage/editpassword/:id" component={UpdatePassword} />
           </Switch>
         </LoginContext>
     </SignupContext>

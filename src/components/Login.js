@@ -25,7 +25,7 @@ export default function Login(props) {
       .then(res=>{
         alert('Log in successful!')
         window.localStorage.setItem('token', res.data.token);
-        props.history.push(`/HomePage`);
+        props.history.push(`/HomePage/${props.match.params.id}`);
         console.log(res.data)
         setLoading(false);
       })

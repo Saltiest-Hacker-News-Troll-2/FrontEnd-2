@@ -13,6 +13,8 @@ export default function UpdatePassword(props) {
         });
     }
 
+    console.log(props)
+
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
@@ -28,8 +30,8 @@ export default function UpdatePassword(props) {
 
     return (
         <div>
-            <a href={`/HomePage`}>Back to Dashboard</a>
-            <form className="form-group d-flex" onSubmit={handleSubmit}>
+            <a href={`/HomePage/${props.match.params.id}`}>Back to Dashboard</a>
+            <form onSubmit={handleSubmit}>
                 <input type="text" name="password" placeholder="Enter a new password" onChange={handleChange} />
                 <button type="submit">Update</button>
             </form>

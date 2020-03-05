@@ -30,6 +30,7 @@ const StyledH1 = styled.h1`
 `
 
 export default function Header(props){
+    console.log(props)
     const token = window.localStorage.getItem('token');
 
     const handleClick = e => {
@@ -43,10 +44,10 @@ export default function Header(props){
                 <StyledH1>TrollFindr</StyledH1>
             </div>
         <HeaderUL>
-            <input type="text" placeholder="Search..."/>
-            <Link to="/HomePage"><CuteButton>Home</CuteButton></Link>
+            {/* <Link to="/HomePage"><CuteButton>Home</CuteButton></Link> */}
             {!token ? <Link to="/Login"><CuteButton>Login</CuteButton></Link> : <Link to="/Login"><CuteButton onClick={handleClick}>Log out</CuteButton></Link>}
             <Link to="/Signup"><CuteButton>Signup</CuteButton></Link>
+            {token ? <Link to={`/Search`}><CuteButton>Search</CuteButton></Link> : alert('Please log in to use this feature!')}
         </HeaderUL>
         </HeaderDiv>
     )
