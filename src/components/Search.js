@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import HomePageCard from "./HomePageCard";
 
 // This is honestly a terrible way to do this, but i'm just doing this simply for actual functionality over how nice it is.  
 // Not relevant.
 
-export default function SearchForm() {
+export default function Search() {
   const [search, setSearch] = useState("");
   const [info, setInfo] = useState([]);
 
   useEffect(() => {
-    axios 
-    .get("")
+  axiosWithAuth()
+    .get("/api/comments?limit=10&offset=1")
     .then(response => {
-      const results = response.data.results.filter(characters =>
-        characters.name.toLowerCase().includes(search.toLowerCase())
+      const results = response.data.filter(characters =>
+        characters.By.toLowerCase().includes(search.toLowerCase())
         );
         setInfo(results);
     })
@@ -35,7 +36,13 @@ export default function SearchForm() {
        <input onChange={handleChange} id="name" type="text" name="searchfield" placeholder="Search For Character" value={search}/>
      </form>
      {search ? info.map((character => {
-       return(<CharacterCard char={character}/>)
+       return(
+        <div key={character.id}>
+          <h1>By: {character.By}</h1>
+          <h3>Salty Meter: {character.Score}</h3>
+          <h4>{character.Text}</h4>
+        </div>
+       )
      }
      )) : null}
     </div>

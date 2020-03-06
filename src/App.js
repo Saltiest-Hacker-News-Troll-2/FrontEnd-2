@@ -8,6 +8,7 @@ import LoginContext from './contexts/LoginContext';
 import SignupContext from './contexts/SignupContext';
 import PrivateRoute from './components/PrivateRoute';
 import UpdatePassword from './components/UpdatePassword';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/Signup">
               <Signup />
             </Route>
+            <Route path="/Search" component={Search} />
             <PrivateRoute exact path="/HomePage/:id" component={HomePage} />
             <PrivateRoute exact path="/HomePage/editpassword/:id" component={UpdatePassword} />
             <Route component={Login} />

@@ -30,7 +30,6 @@ const StyledH1 = styled.h1`
 `
 
 export default function Header(props){
-    console.log(props)
     const token = window.localStorage.getItem('token');
 
     const handleClick = e => {

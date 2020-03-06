@@ -16,8 +16,6 @@ export default function Login(props) {
   // Set local context to prevent double submitting by disabling the button while it's submitting.
   const [loading, setLoading] = useState(false); 
 
-  console.log(props)
-
   const handleSubmit = e => {
     e.preventDefault();
     dispatch({type: 'LOGIN'})
